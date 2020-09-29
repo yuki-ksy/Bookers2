@@ -14,11 +14,11 @@
 
       <div class="container">
 
-
       <nav class="nav navbar-nav navbar-left">
-      <span>Bookers</span>
+        <span>Bookers</span>
       </nav>
 
+      <nav>
       <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
       　<li><%= link_to " Home", user_path(current_user), class: "glyphicon glyphicon-home" %></li>
@@ -32,8 +32,9 @@
       　<li><%= link_to " login", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
       <% end %>
       </ul>
+      </nav>
       </div>
-      </div>
+
     </header>
 
     <%= yield %>
