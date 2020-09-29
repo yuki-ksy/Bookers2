@@ -1,0 +1,26 @@
+<div class="container">
+
+        <p id="notice"></p>
+
+<h2>User info</h2>
+<% if @user.errors.any? %>
+    <%= @user.errors.count %>errors prohibited this obj from being saved:
+    <% @user.errors.full_messages.each do |message| %>
+      <ul>・<%= message %></ul>
+    <% end %>
+  <% end %>
+
+<%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true do |f| %>
+<div class = "field">name
+<%= f.text_field :name %></div>
+
+<div class = "field">image
+<%= f.attachment_field :profile_image %></div>
+<div class = "field">
+<label>introduction</label>
+<%= f.text_area :introduction %></div>
+
+<%= f.submit 'Update User' %>
+<% end %>
+
+</div>

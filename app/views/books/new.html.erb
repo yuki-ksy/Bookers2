@@ -1,0 +1,23 @@
+<%= render 'users/user', user: @user, book: @book %>
+<h2>Book detail</h2>
+
+<tbody>
+    <% @books.each do |book| %>
+    <tr>
+      <td>
+       <%= attachment_image_tag book.user, :profile_image %>
+      </td>
+
+      <td>
+        <%= book.title %>
+      </td>
+      <td>
+        <%= book.body %>
+      </td>
+
+    </tr>
+  </tbody>
+
+  <%= link_to "Edit", edit_book_path %>
+  <%= link_to "Destroy" %>
+  <% end %>

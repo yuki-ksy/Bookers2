@@ -1,0 +1,43 @@
+<div class="container">
+<p id="notice"></p>
+<div class="col-xs-3">
+<h2>User info</h2>
+	<% if user_signed_in? %>
+
+<div><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format:'jpeg', class: "profile-img", fallback:"none.png" %>
+</div>
+<table class="table table-inverse">
+<tbody>
+<tr>
+  <th>name</th>
+  <th><%= user.name %></th>
+</tr>
+
+<tr>
+  <th>introduction</th>
+  <th><%= user.introduction %></th>
+
+</tr>
+
+</tbody>
+</table>
+<div>
+  <% if current_user != user %>
+  <%= link_to "", user_path(current_user), class: "glyphicon glyphicon-wrench btn btn-default col-xs-12"  %>
+  <% else %>
+  <%= link_to "", edit_user_path(current_user), class: "glyphicon glyphicon-wrench btn btn-default col-xs-12"  %>
+  <% end %>
+</div>
+<% end %>
+
+
+<h2>New book</h2>
+
+<%= form_with model: book, url:books_path, local:true do |f| %>
+<h4>Title</h4>
+<%= f.text_field :title %>
+<h4>Opinion</h4>
+<%= f.text_area :body %>
+<%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %>
+<% end %>
+

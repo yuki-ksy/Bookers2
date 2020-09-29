@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'users/user', user: @user, book: @book %>
+    </div>
+
+        <p id="notice"></p>
+
+    <div class="col-xs-9">
+
+<h2>Users</h2>
+
+<table class="table table-inverse">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+       <%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback:"none.png", size: '40x40' %>
+      </td>
+
+      <td>
+        <%= user.name %>
+      </td>
+      <td>
+        <%= link_to "Show", user_path(user.id) %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+</div>
+</div>
+</div>
