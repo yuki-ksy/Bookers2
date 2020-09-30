@@ -1,24 +1,39 @@
+
+    <div class="container">
+
+      <p id="notice"></p>
+
+      <div class="row">
+
+	     <div class="col-md-6 col-md-offset-3">
+
   <h1>Editing Book</h1>
 
- <% if @book.errors.any? %>
-    <%= @book.errors.count %>errors prohibited this obj from being saved:
-    <% @book.errors.full_messages.each do |message| %>
-      <ul>・<%= message %></ul>
-    <% end %>
-  <% end %>
+          <% if @book.errors.any? %>
+            <%= @book.errors.count %>errors prohibited this obj from being saved:
+            <% @book.errors.full_messages.each do |message| %>
+              <ul>・<%= message %></ul>
+            <% end %>
+          <% end %>
 
 
-<%= form_with model: @book, url: book_path(@book),local:true do |f| %>
-<h4>Title</h4>
-<%= f.text_field :title %>
-<h4>Opinion</h4>
-<%= f.text_area :body %>
+          <%= form_with model: @book, url: book_path(@book),local:true do |f| %>
+            <div class="field row">
+            <h4>Title</h4>
+            <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="field row">
+            <h4>Opinion</h4>
+            <%= f.text_area :body, class: "form-control" %>
+            </div>
+            <div class="action row">
+            <%= f.submit 'Update Book', class: "btn btn-primary btn-block" %>
+            </div>
+          <% end %>
 
-  <%= f.submit 'Update Book' %>
+          <%= link_to "Show", book_path %> |
+          <%= link_to "Back", books_path %>
 
-<% end %>
-
-<%= link_to "Show", book_path %>
-<%= link_to "Back", books_path %>
-
-
+      </div>
+    </div>
+  </div>
